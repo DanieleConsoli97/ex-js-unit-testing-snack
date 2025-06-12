@@ -8,9 +8,7 @@ const { getInitials,
 //NOTE - snack-1
 
 test('getInitials restituisce le iniziali di un nome completo', () => {
-
     expect(getInitials('Daniele Consoli')).toBe('DC')
-
 })
 
 //NOTE - snack-2
@@ -58,5 +56,43 @@ beforeEach(() => {
 
 test("La funzione findPostById restituisce il post corretto dato l’array di post e l’id", () => {
     expect(findPostById(posts, 2)).toEqual({ id: 2, title: "alibaba post", slug: "alibaba_post" })
+    expect(()=> findPostById("ciao", 2)).toThrow()
+    expect(()=> findPostById(posts, "ciao")).toThrow()
+    expect(()=> findPostById(posts, "10")).toThrow()
 })
 
+
+describe('Controlli slug',()=>{
+    test('La funzione createSlug restituisce una stringa in lowercase.', () => {
+    expect(createSlug("Ciao Sono daniele")).toBe('ciao-sono-daniele')
+})
+test('La funzione createSlug restituisce una stringa in lowercase.', () => {
+    expect(createSlug("Ciao Sono daniele")).toBe('ciao-sono-daniele')
+})
+test('La funzione createSlug lancia un errore se il titolo è vuoto o non valido.', () => {
+    expect(() => createSlug("")).toThrow()
+});
+})
+
+describe('Controlli numerici',()=>{
+    test('La funzione average calcola la media aritmetica di un array di numeri.', () => {
+    expect(average([15, 5, 5])).toBe(8)
+    expect(() => average([15, "ciaoMOndo"])).toThrow()
+})
+})
+
+
+describe('Controlli stringhe',()=>{
+    
+    test('getInitials restituisce le iniziali di un nome completo', () => {
+    expect(getInitials('Daniele Consoli')).toBe('DC')
+})
+test('La funzione createSlug restituisce una stringa in lowercase.', () => {
+    expect(createSlug("Ciao Sono daniele")).toBe('ciao-sono-daniele')
+})
+test('La funzione isPalindrome verifica se una stringa è un palindromo.', () => {
+
+    expect(isPalindrome("anna")).toBeTruthy()
+    expect(isPalindrome("anndsa")).toBeFalsy()
+})
+})

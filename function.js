@@ -36,7 +36,13 @@ const isPalindrome= (string)=>{
 }
 
 const findPostById = ( arr , id ) => {
-    
+    if  (!Array.isArray(arr)){
+        throw new Error ('La funzione accetta solo array come primo argomento')
+    }
+    if (typeof id !== "number" || isNaN(id)) {
+        throw new Error ('La funzione accetta solo un numero come secondo argomento')
+    }
+
     return arr.find((post)=>post.id=== id)
 }
 
