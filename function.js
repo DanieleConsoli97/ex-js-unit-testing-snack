@@ -4,7 +4,7 @@ const getInitials = (nomeCompleto) => {
     return `${nomeSeparato[0].charAt(0).toUpperCase()}${nomeSeparato[1].charAt(0).toUpperCase()}`
 }
 const createSlug = (string) => {
-    return string.toLowerCase()
+    return string.replaceAll(" ","-").toLowerCase()
 }
 
 const average = (arrNum) => {
@@ -20,5 +20,15 @@ const average = (arrNum) => {
     }, 0)
     return parseInt(sum / arrNum.length)
 
+    
 }
-module.exports = { getInitials, createSlug, average }
+
+//NOTE - split("") ritorna un array di lettere separate
+//NOTE - reverse() ritorna un array invertito
+//NOTE - join("") uniamo tutto con join diamo "" senza spazio per unire tutto senza divisori ne spazi
+const isPalindrome= (string)=>{
+    const reversedString = string.split("").reverse().join("")
+    return reversedString===string ? true : false
+}
+
+module.exports = { getInitials, createSlug, average,isPalindrome}
