@@ -4,6 +4,10 @@ const getInitials = (nomeCompleto) => {
     return `${nomeSeparato[0].charAt(0).toUpperCase()}${nomeSeparato[1].charAt(0).toUpperCase()}`
 }
 const createSlug = (string) => {
+    if( !string ){
+        throw new Error("Il titolo non può essere vuoto");
+    }
+
     return string.replaceAll(" ","-").toLowerCase()
 }
 
@@ -31,4 +35,9 @@ const isPalindrome= (string)=>{
     return reversedString===string ? true : false
 }
 
-module.exports = { getInitials, createSlug, average,isPalindrome}
+const findPostById = ( arr , id ) => {
+    
+    return arr.find((post)=>post.id=== id)
+}
+
+module.exports = { getInitials, createSlug, average,isPalindrome,findPostById}
