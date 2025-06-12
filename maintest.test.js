@@ -100,7 +100,7 @@ test('La funzione isPalindrome verifica se una stringa è un palindromo.', () =>
 })
 
 test('Dopo aver aggiunto un post con la funzione addPost, l array posts deve contenere un elemento in più.',()=>{
-    expect(addPost(posts,{ id: 4, title: "alibaba post", slug: "alibaba_post" }).length).toBe(4)
+    expect(addPost(posts,{ id: 4, title: "alibaba postdfgdfg", slug: "alibaba_postdfgdfg" }).length).toBe(4)
 })
 
 test('Dopo aver rimosso un post con la funzione removePost, l array posts deve contenere un elemento in meno.',()=>{
@@ -116,10 +116,13 @@ test("La funzione findPostById restituisce il post corretto dato l’array di po
 })
 
 test('Dopo aver aggiunto un post con la funzione addPost, l array posts deve contenere un elemento in più.',()=>{
-    expect(addPost(posts,{ id: 4, title: "alibaba post", slug: "alibaba_post" }).length).toBe(4)
+    expect(addPost(posts,{ id: 4, title: "alibaba postdfdsf", slug: "alibaba_postsdfs" }).length).toBe(4)
 })
 
 test('Dopo aver rimosso un post con la funzione removePost, l array posts deve contenere un elemento in meno.',()=>{
     expect(removePost( posts , 2 ).length).toBe(2)
+})
+test('Se si tenta di aggiungere un post con un id o uno slug già esistente, la funzione addPost deve lanciare un errore',()=>{
+    expect(()=>addPost(posts,{ id: 1, title: "amazon Post", slug: "amazon_post" })).toThrow()
 })
 })
