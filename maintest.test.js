@@ -2,7 +2,9 @@ const { getInitials,
     createSlug, 
     average, 
     isPalindrome, 
-    findPostById 
+    findPostById,
+    addPost,
+    removePost
 } = require("./function")
 
 //NOTE - snack-1
@@ -44,7 +46,7 @@ test('La funzione createSlug lancia un errore se il titolo è vuoto o non valido
 });
 
 //NOTE - snack-7
-let posts
+let posts;
 
 beforeEach(() => {
     posts = [
@@ -94,5 +96,30 @@ test('La funzione isPalindrome verifica se una stringa è un palindromo.', () =>
 
     expect(isPalindrome("anna")).toBeTruthy()
     expect(isPalindrome("anndsa")).toBeFalsy()
+})
+})
+
+test('Dopo aver aggiunto un post con la funzione addPost, l array posts deve contenere un elemento in più.',()=>{
+    expect(addPost(posts,{ id: 4, title: "alibaba post", slug: "alibaba_post" }).length).toBe(4)
+})
+
+test('Dopo aver rimosso un post con la funzione removePost, l array posts deve contenere un elemento in meno.',()=>{
+    expect(removePost( posts , 2 ).length).toBe(2)
+})
+
+describe('Test posts',()=>{
+test("La funzione findPostById restituisce il post corretto dato l’array di post e l’id", () => {
+    expect(findPostById(posts, 2)).toEqual({ id: 2, title: "alibaba post", slug: "alibaba_post" })
+    expect(()=> findPostById("ciao", 2)).toThrow()
+    expect(()=> findPostById(posts, "ciao")).toThrow()
+    expect(()=> findPostById(posts, "10")).toThrow()
+})
+
+test('Dopo aver aggiunto un post con la funzione addPost, l array posts deve contenere un elemento in più.',()=>{
+    expect(addPost(posts,{ id: 4, title: "alibaba post", slug: "alibaba_post" }).length).toBe(4)
+})
+
+test('Dopo aver rimosso un post con la funzione removePost, l array posts deve contenere un elemento in meno.',()=>{
+    expect(removePost( posts , 2 ).length).toBe(2)
 })
 })

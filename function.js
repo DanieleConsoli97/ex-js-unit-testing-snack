@@ -45,5 +45,19 @@ const findPostById = ( arr , id ) => {
 
     return arr.find((post)=>post.id=== id)
 }
+const addPost=( arr , post)=>{
+    return [...arr,post]
+}
 
-module.exports = { getInitials, createSlug, average,isPalindrome,findPostById}
+const removePost=( arr , id)=>{
+    return arr.filter(post=>post.id != id)
+}
+
+module.exports = { getInitials,
+    createSlug, 
+    average,
+    isPalindrome,
+    findPostById,
+    addPost,
+    removePost
+}
